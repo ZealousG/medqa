@@ -1,0 +1,14 @@
+# folder
+__pycache__/
+tmp/
+.vscode/
+data/
+.pytest_cache/
+logs/
+
+# file
+.env
+.pyc
+.log
+
+# ignore all
