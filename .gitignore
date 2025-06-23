@@ -13,15 +13,16 @@ data/
 logs/
 
 # file
-.env
-.pyc
-.log
-.json
-.txt
-.csv
-.xlsx
-.xls
-.docx
-.doc
-.md
+*.env
+*.pyc
+*.log
+*.json
+chat_history.json
+*.txt
+*.csv
+*.xlsx
+*.xls
+*.docx
+*.doc
+*.md
 # ignore all
