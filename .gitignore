@@ -16,5 +16,12 @@ logs/
 .env
 .pyc
 .log
-
+.json
+.txt
+.csv
+.xlsx
+.xls
+.docx
+.doc
+.md
 # ignore all
