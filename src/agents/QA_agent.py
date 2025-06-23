@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Optional, TypedDict, Annotated, Union
+from typing import Any, Dict, List, Optional, TypedDict, Annotated, Union, Generator
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langchain_core.language_models import BaseLLM
 from langchain.agents import AgentExecutor, create_openai_tools_agent
@@ -114,6 +114,80 @@ class QA_Agent:
                 "query": query,
                 "response": f"抱歉，处理您的医疗查询时出现错误: {str(e)}",
                 "error": str(e),
+                "model_type": type(self.model).__name__ if self.model else "Unknown"
+            }
+    
+    def run_stream(self, query: str, chat_history: Optional[List[Dict[str, str]]] = None) -> Generator[Dict[str, Any], None, None]:
+        """
+        流式运行医疗问答 Agent
+        
+        Args:
+            query: 用户查询
+            chat_history: 聊天历史
+            
+        Yields:
+            流式响应结果
+        """
+        try:
+            if self.verbose:
+                logger.info(f"流式处理医疗查询: {query}")
+            
+            # 初始响应
+            yield {
+                "query": query,
+                "response": "正在分析您的问题...",
+                "status": "processing",
+                "stage": "classification"
+            }
+            
+            # 转换聊天历史
+            messages = self._convert_chat_history(chat_history) if chat_history else []
+            messages.append(HumanMessage(content=query))
+            
+            # 初始化状态
+            initial_state = AgentState(
+                messages=messages,
+                current_agent="",
+                agent_responses={},
+                final_response=None,
+                metadata={"workflow_type": "qa_agent"}
+            )
+            
+            # 执行分类
+            yield {
+                "query": query,
+                "response": "正在分类您的问题类型...",
+                "status": "processing",
+                "stage": "classification"
+            }
+            
+            # 执行工作流
+            result = self.workflow.invoke(initial_state)
+            
+            # 最终响应
+            final_response = {
+                "query": query,
+                "response": result.get("final_response", ""),
+                "agent_type": result.get("current_agent", ""),
+                "model_type": type(self.model).__name__,
+                "tools_used": self.get_available_tools(),
+                "status": "completed",
+                "metadata": {
+                    "chat_history_length": len(chat_history) if chat_history else 0,
+                    "agent_responses": result.get("agent_responses", {}),
+                    "workflow_type": "qa_agent"
+                }
+            }
+            
+            yield final_response
+            
+        except Exception as e:
+            logger.error(f"流式医疗问答 Agent 运行失败: {str(e)}")
+            yield {
+                "query": query,
+                "response": f"抱歉，处理您的医疗查询时出现错误: {str(e)}",
+                "error": str(e),
+                "status": "error",
                 "model_type": type(self.model).__name__ if self.model else "Unknown"
             }
     
