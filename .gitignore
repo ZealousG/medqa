@@ -1,9 +1,15 @@
 # folder
-__pycache__/
-tmp/
+.git/
+.svn/
+.hg/
+.DS_Store/
+.idea/
 .vscode/
-data/
 .pytest_cache/
+__pycache__/
+
+tmp/
+data/
 logs/
 
 # file

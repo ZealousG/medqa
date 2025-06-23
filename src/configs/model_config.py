@@ -6,7 +6,7 @@ load_dotenv(".env")
 class ModelConfig:
     def __init__(self):
         # 选择模型类型  
-        self.use_api = False  # 是否使用API
+        self.use_api = True  # 是否使用API
         self.use_fastllm = False  # 是否使用FastLLM加速  
         self.use_vllm = False  # 是否使用VLLM加速 
 
