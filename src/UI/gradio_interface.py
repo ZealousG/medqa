@@ -13,7 +13,7 @@ import uuid
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from src.agents.QA_agent import QA_Agent
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from src.utils.logger import setup_logger
 from langchain_openai import ChatOpenAI
 

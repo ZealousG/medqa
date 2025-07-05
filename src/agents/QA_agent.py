@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langgraph.graph import StateGraph, END
 
 from src.models.QA_model import create_qa_model, QAModel
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from langchain_core.tools import BaseTool
 from src.tools.tools import create_tools
 from src.utils.logger import setup_logger

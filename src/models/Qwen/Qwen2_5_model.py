@@ -3,7 +3,7 @@ from typing import Any, List, Optional
 from langchain.callbacks.manager import CallbackManagerForLLMRun
 from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 import torch
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from src.utils.logger import setup_logger
 from pydantic import PrivateAttr
 

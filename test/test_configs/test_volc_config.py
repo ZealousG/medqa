@@ -36,7 +36,7 @@ def test_volc_config():
     
     # 测试创建模型
     try:
-        from src.configs.model_config import ModelConfig
+        from src.configs.configs import ModelConfig
         from src.models.QA_model import create_qa_model
         
         # 创建配置

@@ -15,7 +15,7 @@ from langchain_core.language_models import BaseLLM
 from langchain_openai import ChatOpenAI
 
 from src.models.QA_model import QAModel, APIModelStrategy, LocalModelStrategy, create_qa_model
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from src.models.Qwen.Qwen2_5_model import Qwen2_5_Coder
 
 

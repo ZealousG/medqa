@@ -10,7 +10,7 @@ from unittest.mock import Mock, patch, MagicMock
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
 
 from src.models.Qwen.Qwen2_5_model import Qwen2_5_Coder
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from langchain.llms.base import LLM
 
 class TestQwen2_5_Coder:
@@ -198,6 +198,7 @@ class TestQwen2_5_Coder:
             assert isinstance(qwen_model, LLM)
     
     def test_config_validation(self):
+        
         """测试配置验证"""
         # 测试空配置
         config = ModelConfig()

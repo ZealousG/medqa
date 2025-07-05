@@ -25,4 +25,6 @@ chat_history.json
 *.docx
 *.doc
 *.md
+*.pdf
+*.drawio
 # ignore all

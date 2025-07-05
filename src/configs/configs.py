@@ -10,8 +10,8 @@ class ModelConfig:
         self.use_fastllm = False  # 是否使用FastLLM加速  
         self.use_vllm = False  # 是否使用VLLM加速 
 
-        # 本地模型配置  
-        self.model_path = "/mnt/d/data/LLMs/Qwen/Qwen2.5-1.5B"  # 本地模型路径  
+        # 本地模型配置（可在.env中设置 MODEL_PATH 和 DEVICE）
+        self.model_path = os.getenv("MODEL_PATH", "/mnt/d/data/LLMs/Qwen/Qwen2.5-1.5B")  # 本地模型路径  
         self.device = "cuda:0"  # 设备  
 
         # volcengine API配置  
@@ -21,8 +21,8 @@ class ModelConfig:
 
         # 知识库配置  
         self.retriever_type = "knn"  # 检索类型：knn, similarity, bm25, l2  
-        self.embedding_model_name = "paraphrase-multilingual-MiniLM-L12-v2"  
-        self.index_path = "data/indices/faiss_index.bin"  
+        self.embedding_model_name = os.getenv("EMBEDDING_MODEL")  
+        self.index_path = "data/indices/medical_books"  
         self.top_k = 5  # 默认检索数量  
 
         # 推理配置  

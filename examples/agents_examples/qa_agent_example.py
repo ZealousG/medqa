@@ -13,7 +13,7 @@ load_dotenv()
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from src.agents.QA_agent import QA_Agent
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)

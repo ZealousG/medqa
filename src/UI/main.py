@@ -11,7 +11,7 @@ import socket
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from src.UI.gradio_interface import GradioInterface
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 
 def find_free_port(start_port=7860, max_port=7900):
     """

@@ -13,7 +13,7 @@ from typing import Dict, Any
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.agents.QA_agent import QA_Agent, AgentState
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)

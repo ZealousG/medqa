@@ -10,7 +10,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
 from src.UI.gradio_interface import GradioInterface
-from src.configs.model_config import ModelConfig
+from src.configs.configs import ModelConfig
 
 def example_basic_usage():
     """基本使用示例"""
